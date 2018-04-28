@@ -6,6 +6,7 @@ const jpegtran = require('imagemin-jpegtran')
 const pngquant = require('imagemin-pngquant')
 const optipng = require('imagemin-optipng')
 const jpegrecompress = require('imagemin-jpeg-recompress')
+const gifsicle = require('imagemin-gifsicle');
 
 module.exports = (file, options) => {
   let pathParse = path.parse(file);
@@ -21,10 +22,14 @@ module.exports = (file, options) => {
         optipng({
           optimizationLevel: 3
         }),
-        pngquant()
+        pngquant(),
+        gifsicle({
+          interlaced: false,
+          optimizationLevel: 3
+        })
       ]
     }).then(function(files){
-      files[0].path;
+      console.log(`Compressed image: ${files[0].path}`);
     });
   }
 }

@@ -23,6 +23,10 @@ presets["PROD"] = presets["PRODUCTION"] = Object.assign(
       /.*\.sass/gmi,
       /.*\.scss/gmi,
       /.*\.jsx/gmi,
+      /.*\.vue/gmi,
+      /.*\.map/gmi,
+      /.*\.pug/gmi,
+      /.*\.jade/gmi,
       /.sass-cache/gmi
     ]
   }

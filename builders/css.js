@@ -5,13 +5,13 @@ const autoprefixer = require("autoprefixer");
 const pretty = require('cssbeautify');
 const CleanCSS = require('clean-css');
 
-module.exports = (file, options) => {
-  let pathParse = path.parse(file);
+module.exports = (arg1, options, isFile = true) => {
+  let pathParse = path.parse(arg1);
   let filename = pathParse.base;
   let directory = pathParse.dir;
   let extension = pathParse.ext;
 
-  let css = fs.readFileSync(file, "utf-8");
+  let css = isFile ? fs.readFileSync(arg1, "utf-8") : arg1;
 
   if (options.css) { //Minify CSS
     css = postcss([
@@ -29,6 +29,10 @@ module.exports = (file, options) => {
     css = pretty(css, {indent: '  '});
   }
 
-  fs.writeFileSync(file, css);
+  if(isFile){
+    fs.writeFileSync(arg1, css);
+  } else {
+    return css;
+  }
 
 }

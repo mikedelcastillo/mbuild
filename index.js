@@ -22,16 +22,26 @@ const mbuild = (
     let pathParse = path.parse(file);
     let extension = pathParse.ext;
 
-    if(extension.match(/html|htm|svg|xml|php|xhtml/gmi)){
+    console.log(`Building: ${file}`);
+
+    if(extension.match(/html$|htm$|svg$|xml$|php$|xhtml$|vue$/gmi)){
       require('./builders/html')(file, options);
     }
 
-    if(extension.match(/css/gmi)){
+    if(extension.match(/css$/gmi)){
       require('./builders/css')(file, options);
     }
 
-    if(extension.match(/jpg|jpeg|png|gif/gmi)){
+    if(extension.match(/jpg$|jpeg$|png$|gif$/gmi)){
       require('./builders/image')(file, options);
+    }
+
+    if(extension.match(/js$|jsx$/gmi)){
+      require('./builders/js')(file, options);
+    }
+
+    if(extension.match(/json$/gmi)){
+      require('./builders/json')(file, options);
     }
   });
 };

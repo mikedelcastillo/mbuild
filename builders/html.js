@@ -15,8 +15,12 @@ module.exports = (file, options) => {
     html = minify(html, {
       collapseWhitespace: true,
       conservativeCollapse: false,
-      minifyCSS: true,
-      minifyJS: true,
+      minifyCSS(css){
+        return require('./css')(css, options, false);
+      },
+      minifyJS(js){
+        return require('./js')(js, options, false);
+      },
       removeComments: true
     });
   } else{ //Prettify HTML
