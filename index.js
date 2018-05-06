@@ -24,7 +24,7 @@ const mbuild = (
 
     console.log(`Building: ${file}`);
 
-    if(extension.match(/html$|htm$|svg$|xml$|php$|xhtml$|vue$/gmi)){
+    if(extension.match(/html$|htm$|svg$|xml$|xhtml$|vue$/gmi)){
       require('./builders/html')(file, options);
     }
 

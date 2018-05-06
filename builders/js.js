@@ -16,7 +16,7 @@ module.exports = (arg1, options, isFile = true) => {
   if(options.html){ //Minify JS
     js = babel.transform(js, {
       "presets": [
-        ['es2015', {
+        [require.resolve('babel-preset-es2015'), {
           loose: true,
           modules: false
         }]]

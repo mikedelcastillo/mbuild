@@ -19,6 +19,7 @@ presets["PROD"] = presets["PRODUCTION"] = Object.assign(
     images: true,
     exclude: [
       /.DS_store/gmi,
+      /.git/gmi,
       /node_modules/gmi,
       /.*\.sass/gmi,
       /.*\.scss/gmi,
